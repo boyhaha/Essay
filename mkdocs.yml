@@ -1,2 +1,6 @@
-site_name: 葫芦娃
+site_name: 随想
 theme: readthedocs
+
+repo_url: https://github.com/CucurbitBrothers/Essay
+site_favicon: huluwa.ico
+copyright: 葫芦娃
