@@ -4,5 +4,5 @@ pages:
 - [about.md, About]
 theme: readthedocs
 repo_url: https://github.com/CucurbitBrothers/Essay
-site_favicon: huluwa.ico
+site_favicon: favicon.ico
 copyright: 葫芦娃
