@@ -1,5 +1,18 @@
-site_name: 随想
+site_name: Notes
 theme: readthedocs
 repo_url: https://github.com/CucurbitBrothers/Essay
 site_favicon: favicon.ico
 copyright: 葫芦娃
+
+pages:
+    - Home: index.md
+    - AI: 
+        - Machine learning: AI/Machine learning.md
+    - Algorithm: 
+        - 指数退避: Algorithm/Exponential Backoff.md
+    - 数据库: 
+        - SQL: Database/SQL.md
+        - 连接数据库: Database/connect.md
+        - Elasticsearch: Database/Elasticsearch.md
+        - Lucene: Database/Lucene.md
+    - About: about.md
