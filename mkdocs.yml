@@ -1,5 +1,7 @@
-site_name: 随想
+site_name: Notes
+nav:
+    - Home: index.md
+    - Test: test.md
+    - AI: AI/ai.md
+    - About: about.md
 theme: readthedocs
-repo_url: https://github.com/CucurbitBrothers/Essay
-site_favicon: favicon.ico
-copyright: 葫芦娃
