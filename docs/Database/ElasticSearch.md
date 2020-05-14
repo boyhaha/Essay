@@ -6,7 +6,7 @@
 
 [Elasticsearch 入门教程](http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html)
 
-[Elasticsearch7.1中问文档](https://juejin.im/post/5cf77ef16fb9a07eeb1396df)
+[Elasticsearch7.1中文文档](https://juejin.im/post/5cf77ef16fb9a07eeb1396df)
 
 # 基础入门
 

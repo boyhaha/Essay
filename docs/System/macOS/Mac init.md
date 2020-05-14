@@ -1,5 +1,7 @@
 * ### 初始化
 
+  - brew
+    - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   - imem2 https://cloud.tencent.com/developer/article/1125081
   - sys
   - sudo 免密
@@ -12,8 +14,6 @@
   - sudo spctl --master-disable
     - 允许任何来源
   - 配置远程 https://linux.cn/article-8306-1.html
-  - brew
-  - /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   - ssh
     - [命令简化](https://linux.cn/article-8306-1.html)
     - 免密码

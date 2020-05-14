@@ -49,3 +49,9 @@
 重启⇧⌘F5
 停止⇧F5
 ```
+
+# 插件
+GitLens
+TabNine
+Markdown All in one
+Code Spell Checker
