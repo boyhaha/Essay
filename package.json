@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "docs:dev": "npx vuepress dev docs",
+    "docs:build": "npx vuepress build docs",
+    "deploy": "gh-pages -d dist",
+    "deploy:build": "npm run docs:build && gh-pages -d docs/.vuepress/dist"
+  },
+  "devDependencies": {
+    "gh-pages": "^3.0.0",
+    "vuepress-plugin-autobar": "github:boboidream/vuepress-bar"
+  }
+}
