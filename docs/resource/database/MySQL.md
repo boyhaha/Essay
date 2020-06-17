@@ -24,3 +24,8 @@
 - 你如果需要建索引，就不能超过 767 bytes；utf8编码时 255*3=765bytes ,恰恰是能建索引情况下的最大值。
 - 如果像lavavel5.3往后 使用的是utf8mb4编码，默认字符长度则应该是 767除以4向下取整，也就是191。
 - varchar(255) 不是最优的字符长度，最优还是应该根据实际需要的来。但是这是一个保证你能少出错的一个很好的默认值
+
+
+### 索引
+- https://mp.weixin.qq.com/s/ifUM69cb_53-sm9yEUyg3w
+- https://mp.weixin.qq.com/s/oVpiU16PCHQhHr00G3OK-g

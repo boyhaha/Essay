@@ -1,14 +1,14 @@
-| 中文               | cmd + shift + v    |      |
-| ------------------ | ------------------ | ---- |
-| 格式化代码         | Shift + Option + F |      |
-| 跳转到光标上次位置 | cmd + alt + $ $    |      |
-| 预览MarkDown       | cmd + shift + v    |      |
-| 搜索文件           | ctrl+P             |      |
-| 跳转回之前位置     | ctrl+-             |      |
-| 删除当前行         | ctrl+shift+k       |      |
-|                    |                    |      |
-|                    |                    |      |
-|                    |                    |      |
+| 功能               | cmd + shift + v    |                    |
+| ------------------ | ------------------ | ------------------ |
+| 格式化代码         | Shift + Option + F |                    |
+| 跳转到光标上次位置 | cmd + alt + $ $    |                    |
+| 预览MarkDown       | cmd + shift + v    |                    |
+| 搜索文件           | ctrl+P             |                    |
+| 跳转回之前位置     | ctrl+-             |                    |
+| 删除当前行         | ctrl+shift+k       |                    |
+| 快速删除空行       | ^\s*(?=\r?$)\n     | ctrl + f, 然后替换 |
+|                    |                    |                    |
+|                    |                    |                    |
 
 ### [快捷键](https://blog.csdn.net/u010019717/article/details/50443970)
 

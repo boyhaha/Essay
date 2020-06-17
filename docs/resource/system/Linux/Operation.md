@@ -1,9 +1,16 @@
-### 常用命令
+## 常用命令
 
-| 查看进程 | lsof -i tcp:8080 |      |
-| -------- | ---------------- | ---- |
-|          | grep             |      |
-|          |                  |      |
+| 功能             | 命令             |     |
+| ---------------- | ---------------- | --- |
+| 查看进程         | lsof -i tcp:8080 |     |
+| 对关键字进行提取 | grep             |     |
+
+* 查看内核版本
+  * cat /proc/version
+* 查看内存大小
+  * cat /proc/meminfo |grep MemTotal
+* 查看CPU核心数
+  * cat /proc/cpuinfo |grep "cores" | uniq
 
 ### 命令参数
 

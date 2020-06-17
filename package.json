@@ -8,5 +8,8 @@
   "devDependencies": {
     "gh-pages": "^3.0.0",
     "vuepress-plugin-autobar": "github:boboidream/vuepress-bar"
+  },
+  "dependencies": {
+    "valine": "^1.4.14"
   }
 }
