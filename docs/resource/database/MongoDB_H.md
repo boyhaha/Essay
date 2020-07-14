@@ -45,21 +45,7 @@
   ### 使用JavaScript操作MongoDB
 
   ```js
-  db = db.getSiblingDB("sneaky")
-  count = db.pw_live_room.count({cover_url:/https:\/\/avatar.peiwo.cn\/https:*/, "state":0}, {cover_url: 1, owner_uid: 1, _id: 0})
   
-  print(count)
-  for (i = 0; i < count; i++) { 
-  
-      var find_cursor = db.pw_live_room.find({cover_url:/https:\/\/avatar.peiwo.cn\/https:*/, "state":0}, {cover_url: 1, owner_uid: 1, _id: 0}).limit(i+1).skip(i);
-      rlt = find_cursor.next();
-      cover_url = rlt.cover_url;
-      new_cover_url = cover_url.substr(24,90);
-      print(new_cover_url)
-  
-      rlt = db.pw_live_room.update({cover_url:/https:\/\/avatar.peiwo.cn\/https:*/, "state":0}, {$set: {"cover_url": new_cover_url}});
-      print(rlt)
-      }
   ```
 
   ### 查看数据库空间大小

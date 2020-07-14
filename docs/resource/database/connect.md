@@ -5,5 +5,5 @@
 >>redis-cli -h host -p port -a password
 
 >**连接MongoDB**
-   1. mongo pwturn.turnserver.ha:22000
+   1. mongo 
    2. 命令 https://www.jianshu.com/p/0a52c672ae78
