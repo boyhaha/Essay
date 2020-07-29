@@ -1,28 +1,20 @@
 ### 基本快捷键
 
-|                      |        |      |
-| -------------------- | ------ | ---- |
-| 在当前目录打开finder | open . |      |
-|                      |        |      |
-|                      |        |      |
+| cmd      | des                                  |     |
+| -------- | ------------------------------------ | --- |
+| open .   | 在当前目录打开finder                 |     |
+| cmd + r  | 清屏                                 |     |
+| ctrl + u | 清除当前行                           |     |
+| ctrl + a | 到行首                               |     |
+| ctrl + e | 到行尾                               |     |
+| ctrl + w | 删除光标之前的单词                   |     |
+| ctrl + k | 删除光标以后的内容                   |     |
+| Alt + f  | 光标向前（Forward）移动到下一个单词  |     |
+| Alt + b  | 光标往回（Backward）移动到前一个单词 |     |
+|          |                                      |     |
+|          |                                      |     |
 
-```
-pen . 在当前目录下打开finder
-⌘ + return 全屏
-⌘ + f 所查找的内容会被自动复制
-⌘ + d 横着分屏 / ⌘ + shift + d 竖着分屏令
-⌘ + / 光标位置
-⌘ + r 只是换到新一屏，不会像 clear 一样创建一个空屏
-ctrl + u 清除当前行
-ctrl + a 到行首
-ctrl + e 到行尾
-ctrl + w 删除光标之前的单词
-ctrl + k 删除到文本末尾
-⌘ + alt + 方向键 切换屏幕(用于hotkey window)
-⌘ + 方向键 切换tab
-ctrl + _ Undo
-ctrl + y Paste the last thing to be cut
-```
+
 
 ### vi
 

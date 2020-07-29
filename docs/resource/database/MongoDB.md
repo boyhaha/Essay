@@ -1035,11 +1035,17 @@ db.class2.find({book:{$elemMatch:{title:'Python入门', price:47}}}).pretty()
 - 创建索引：(过去的方法：createIndex()）
 
 ```
-db.collection.ensureIndex()
+db.collection.createIndex()
 
 实例：以name域创建索引
-db.class1.ensureIndex({'name':1})  1 表示正向索引， -1 表示逆向索引
+db.class1.createIndex({'name':1})  1 表示正向索引， -1 表示逆向索引
 ```
+* 可选参数:
+  * background: 后台创建
+    * {"background": true}
+  * unique: 是否唯一索引
+  * name: 索引名
+  * expireAfterSeconds: 集合的生存时间, 秒为单位
 
 - 查看当前集合中的索引
 
@@ -1047,18 +1053,23 @@ db.class1.ensureIndex({'name':1})  1 表示正向索引， -1 表示逆向索引
 db.class1.getIndexes()
 ```
 
+
+- 查看当前数据库所有索引
+```
+db.system.indexes.find()
+```
 - 创建复合索引
 
 ```
 实例：同时为两个域创建索引
-db.class1.ensureIndex({'name':1, 'age': -1})
+db.class1.createIndex({'name':1, 'age': -1})
 ```
 
 - 设置过期时间:
 
 ```
 expireAfterSeconds: 秒
-db.test_timer.ensureIndex({"timer":1}, {expireAfterSeconds: 10})
+db.test_timer.createIndex({"timer":1}, {expireAfterSeconds: 10})
 ```
 
 - 删除索引
@@ -1080,24 +1091,35 @@ db.class1.dropIndexes()
 不会删除 _id 索引
 ```
 
+- 查看索引大小
+```
+db.col.totalIndexSize()
+```
+
+- 重建索引
+```
+db.col.reIndex()
+```
+
+
 其他索引 数组索引：如果对某个域创建索引，这个域的值为数组，那么会对数组的值也会创建索引，提高数组中值的查找效率 db.class3.find('bobby':'足球')
 
 ```
 子文档索引：如果某个域的值时文档，那么可以单独对这个子文档中的域创建索引
-db.class2.ensureIndex({'book.title':1})
+db.class2.createIndex({'book.title':1})
 
 唯一索引：如果希望索引拥有不重复的值可以通过创建唯一索引来约束对应的值
-db.class1.ensureIndex({age:1}, {'unique':true})
+db.class1.createIndex({age:1}, {'unique':true})
 
 覆盖索引：查找时不获取具体文档，仅从索引中就可以获取到全部要查询的数据
          具体使用：查询时，限定返回的数据仅包含索引数据
 
 稀疏索引：只针对存在指定域的文档建立索引表，跳过不存在指定域的文档，使索引表更小巧，提高效率
-db.class2.ensureIndex({age:1}, {sparse:true})
+db.class2.createIndex({age:1}, {sparse:true})
 
 文本索引：使用文本索引可以较快速的进行文本检索，文本索引可以建立在任意格式的字符串上
 实例：给python这个域创建索引
-db.class2.ensureIndex({python:'text', description:'text'})
+db.class2.createIndex({python:'text', description:'text'})
 查找python域中的字符串，如果包含search的内容则查找出来
 db.class2.find({$text:{$search:'python html css'}})
 * search 后的字符串以空格分割为多个部分，只要查找到其中一部分就会返回相应的文档

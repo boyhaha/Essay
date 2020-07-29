@@ -5,18 +5,19 @@
 ### [快捷键](https://blog.csdn.net/u010019717/article/details/50443970)
 
 
-| 功能               | cmd + shift + v    |                    |
-| ------------------ | ------------------ | ------------------ |
-| 格式化代码         | Shift + Option + F |                    |
-| 跳转到光标上次位置 | cmd + alt + $ $    |                    |
-| 预览MarkDown       | cmd + shift + v    |                    |
-| 搜索文件           | ctrl+P             |                    |
-| 跳转回之前位置     | ctrl+-             |                    |
-| 删除当前行         | ctrl+shift+k       |                    |
-| 快速删除空行       | ^\s*(?=\r?$)\n     | ctrl + f, 然后替换 |
-| 隐藏/显示 side bar | cmd + b            |                    |
-| 折叠代码           | cmd + k + 0        |                    |
-| 展开代码           | cmd + k + j        |                    |
+| 功能               | cmd + shift + v                   |                    |
+| ------------------ | --------------------------------- | ------------------ |
+| 格式化代码         | Shift + Option + F                |                    |
+| 跳转到光标上次位置 | cmd + alt + $ $                   |                    |
+| 预览MarkDown       | cmd + shift + v                   |                    |
+| 搜索文件           | ctrl+P                            |                    |
+| 跳转回之前位置     | ctrl+-                            |                    |
+| 删除当前行         | ctrl+shift+k                      |                    |
+| 快速删除空行       | ^\s*(?=\r?$)\n                    | ctrl + f, 然后替换 |
+| 隐藏/显示 side bar | cmd + b                           |                    |
+| 折叠代码           | cmd + k + 0                       |                    |
+| 展开代码           | cmd + k + j                       |                    |
+| 大小写转换         | 选中文本, 在命令面板输入transfrom | Cmd + Shift + P    |
 
 
 ### 1、工作区快捷键

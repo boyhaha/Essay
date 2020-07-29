@@ -82,6 +82,7 @@
   - db.collection.explain()
 
   - db.collection.explain("executionStats")
+  - [慢查询日志](http://xstarcd.github.io/wiki/sysadmin/mongodb_slowlog.html)
 
   - ## 引子
 
