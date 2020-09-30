@@ -539,3 +539,30 @@
   综上可以有一个小结论，当查询覆盖精确匹配，范围查询与排序的时候，
   
   `精确匹配字段,排序字段,范围查询字段, `这样的索引排序会更为高效
+
+
+
+- # 大坑
+  ## 问题
+  1. MongoDB建索引导致CPU 100%
+     1. 查询正在建索引的op
+        ```json
+        db.currentOp(
+            {
+              $or: [
+                { op: "command", "query.createIndexes": { $exists: true } },
+                { op: "none", ns: /\.system\.indexes\b/ }
+              ]
+            }
+        )
+        ```  
+     2. 杀掉对应的op
+        ```
+        db.killOp(opid)
+        ```
+     3. 如果找不到opid, 可以rename当前collection终止建立索引操作, 等待几分钟恢复到原collection
+        ```
+        db.collection.renameCollection("new_collection")
+        ```
+  2. reIndex
+     1. 不同版本之间, reIndex的 exclusive lock不同, 但是还是不推荐使用, 就想官方文档所说, 太昂贵

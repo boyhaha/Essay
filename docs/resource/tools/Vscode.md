@@ -140,13 +140,41 @@ F2
 
 ```
 {
-    "python.pythonPath": "xx",
-    "editor.rulers": [80],
+    "window.zoomLevel": 1,
+    "files.autoSave": "onFocusChange",
+    "python.linting.flake8Enabled": true,
+    "python.linting.enabled": true,
+    "python.linting.flake8Args": ["--max-line-length=120"],
+    "editor.selectionHighlight": true,
     "editor.tabSize": 4,
+    "python.linting.pylintEnabled": false,
     "files.exclude": {
-        "**/__pycache__": true  
+        "**/__pycache__": true,
+        "**/*.pyc": true
     },
-    "python.linting.flake8Args": ["--max-line-length=120"]
+    "editor.rulers": [
+        80, 120
+    ],
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "editor.minimap.enabled": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "tabnine.experimentalAutoImports": true,
+    "editor.largeFileOptimizations": false,
+    "workbench.iconTheme": "vscode-icons",
+    "cSpell.userWords": [
+    ],
+    "sync.gist": "79ab3980400d3f6d9f766d2bf5acf578",
+    "workbench.activityBar.visible": true,
+    "files.defaultLanguage": "python",
+    "todohighlight.isEnable": false,
+    "terminal.integrated.automationShell.osx": "",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "workbench.colorTheme": "Tiny Light",
+    "python.formatting.autopep8Args": [
+        "--max-line-length=120",
+        "--ignore", "E402"
+    ],
 }
 ```
 

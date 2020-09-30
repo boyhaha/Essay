@@ -299,3 +299,9 @@ sudo env LDFLAGS='-L/usr/local/lib -L/usr/local/opt/openssl/lib
 
 - duplicate key value violates unique constraint "kick_privilege_pkey"
 - kick_privilege 表的 kick_privilege_id_seq 小于 max(id), 导致插入数据时,新生成的id 已存在
+
+### 数据导入, 导出
+-- pg_dump -h 生产数据库IP -U 生产数据库账号 -d 生产数据库实例 -t wh_photo -f wh_photo.sql
+-- pg_dump -h 192.168.200.12 -U sneaky -d sneaky -t pw_item_detail -f pw_item_detail.sql
+-- DYHY$D#e8@q
+-- psql -h localhost -U test -d postgres -f gift.sql
