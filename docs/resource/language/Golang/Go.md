@@ -8,6 +8,7 @@
 - 提供了海量的并行支持
 - 不适合用来开发对实时性要求很高的软件
   - 因为垃圾回收和自动内存分配
+- 是一门类型安全和内存安全的编程语言(虽然 Go 语言中仍有指针的存在，但并不允许进行指针运算)
 
 ### 格式化代码
 
@@ -34,7 +35,7 @@
 
 ### 生成代码文档
 
-- go doc [链接](https://cucurbitbrothers.github.io/Essay/Language/Golang/go/[http://golang.org/cmd/godoc/](http://golang.org/cmd/godoc/)（)
+- go doc
 - 一般用法
 - `go doc package` 获取包的文档注释，例如：`go doc fmt` 会显示使用 `godoc` 生成的 `fmt` 包的文档注释。
 - `go doc package/subpackage` 获取子包的文档注释，例如：`go doc container/list`。
@@ -43,11 +44,11 @@
 ### 其他工具
 
 - go install
-- 安装go包的工具
+  - 安装go包的工具
 - go fix
-- 将你的Go代码从旧的发行版迁移到最新的发行版
+  - 将你的Go代码从旧的发行版迁移到最新的发行版
 - go test
-- 轻量级单元测试框架
+  - 轻量级单元测试框架
 
 ### 基本结构和要素
 

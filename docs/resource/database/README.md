@@ -11,5 +11,4 @@ sidebar: auto
 ## [Redis](./Redis.md)
 ## [MongoDB](./MongoDB.md)
 ### [MongoDB 进阶](./MongoDB_H.md)
-## [ElasticSearch](./ElasticSearch.md)
-### [Lucene](./Lucene.md)
+## [ElasticSearch](./elasticsearch/)

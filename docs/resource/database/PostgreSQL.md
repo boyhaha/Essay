@@ -1,9 +1,29 @@
+## A
+
+### SQL
+* 删除table
+  * > DROP TABLE table_name;
+* seq
+  * 设置序列seq
+    * > SELECT setval('table_id_seq', 1010);
+  * 删除序列
+    * DROP SEQUENCE seq_name[, ...]
+
+## B
+
 ### 安装
 
 ```
 sudo env LDFLAGS='-L/usr/local/lib -L/usr/local/opt/openssl/lib
 -L/usr/local/opt/readline/lib' pip install psycopg2
 ```
+
+### 数据导入, 导出
+-- pg_dump -h 生产数据库IP -U 生产数据库账号 -d 生产数据库实例 -t wh_photo -f wh_photo.sql
+-- pg_dump -h 192.168.200.12 -U sneaky -d sneaky -t pw_item_detail -f pw_item_detail.sql
+-- DYHY$D#e8@q
+-- psql -h localhost -U test -d postgres -f gift.sql
+
 
 ### 数据结构
 
@@ -300,8 +320,26 @@ sudo env LDFLAGS='-L/usr/local/lib -L/usr/local/opt/openssl/lib
 - duplicate key value violates unique constraint "kick_privilege_pkey"
 - kick_privilege 表的 kick_privilege_id_seq 小于 max(id), 导致插入数据时,新生成的id 已存在
 
-### 数据导入, 导出
--- pg_dump -h 生产数据库IP -U 生产数据库账号 -d 生产数据库实例 -t wh_photo -f wh_photo.sql
--- pg_dump -h 192.168.200.12 -U sneaky -d sneaky -t pw_item_detail -f pw_item_detail.sql
--- DYHY$D#e8@q
--- psql -h localhost -U test -d postgres -f gift.sql
+### 死锁
+
+#### 锁类型
+* 行级锁
+* 表级锁
+
+#### 表级锁
+* AcessShareLock（访问共享锁）: 通过在一张表或多张表一条 SELECT 语句检索数据时就会自动获取。这个模式会阻塞在同一张表下的 ALTER TABLE，DROP TABLE 以及 VACUUM(垃圾收集以及可选地分析一个数据库) (AccessExclusiveLock，访问排他锁)操作。
+* RowShareLock （行共享锁）: 通过一条SELECT...FOR UPDATE子句自动获取。它会在同一张表上阻塞并发的ExclusiveLock(排他锁）以及AccessExclusiveLock(访问排他锁）。
+* RowExclusiveLock （行排他锁）: 通过UPDATE，INSERT，或者 DELETE命令自动获取。它会在同一张表上阻塞ALTER TABLE，DROP TABLE,VACUUM 和 CREATE INDEX命令。（ShareLock[共享锁]，ShareRowExclusiveLock[共享行排他锁]，ExclusiveLock[排他锁]，AccessExclusiveLock[访问排他锁]）。
+* ShareLock（共享锁）: 通过CREATE INDEX命令自动获取。它会在同一张表上阻塞INSERT, UPDATE, DELETE, ALTER TABLE, DROP TABLE, 以及 VACUUM命令.(RowExclusiveLock[行排他锁], ShareRowExclusiveLock[共享行排他锁], ExclusiveLock[排他锁], 以及 AccessExclusiveLock[访问排他锁])
+* ShareRowExclusiveLock（共享行排他锁）: 这个锁模式与ExclusiveLock（排他锁）是一样的，但是它允许获取并发的 RowShareLock（行共享锁）
+* SHARE UPDATE EXCLUSIVE 锁: 与”Share update exclusive,Share,Share row ,exclusive,exclusive,Access exclusive”模式冲突，这种模式保护一张表不被并发的模式更改和VACUUM; “Vacuum(without full), Analyze ”和 “Create index concurrently”命令会获得这种类型锁。
+* ExclusiveLock（排他锁）: ”每个事务在它的事务ID的整个时间里都会持有一个Exclusive Lock（排他锁）”。如果一个事务发现它需要特别地等待另一个事务，它就会尝试地在另一个事务ID上获取 Share Lock（共享锁）。这仅当另一个事务结束并释放它自己的锁时才会成功。（注意，冲突）。Exclusive Lock（排他锁）会在同一张表上阻塞INSERT, UPDATE, DELETE, CREATE INDEX, ALTER TABLE,DROP TABLE, SELECT...FOR UPDATE 以及 VACUUM命令。
+#### 行级锁
+* Exclusive lock（排他锁）: 当通过UPDATE或DELETE命中行时就会自动获取该锁。锁会一直被持有，直到一个事务提交或回滚了。为了手动获取exclusive-lock（排他锁），可以使用SELECT FOR UPDATE。
+* Share-Lock（共享锁）：当通过SELECT...FOR SHARE命中行时就会自动获取该锁。
+
+#### 死锁解决办法
+1. 查看数据库进程
+   1. SELECT * FROM pg_stat_activity WHERE datname='db name';
+2. 杀掉进程
+   1. SELECT pg_terminate_backend(PID)
