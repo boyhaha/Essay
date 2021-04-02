@@ -1,6 +1,5 @@
 [Elasticsearch中文社区](https://elasticsearch.cn/)
-
-[Elasticsearch权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)
+[Elasticsearch中文文档](https://learnku.com/docs/elasticsearch73/7.3)
 
 [Python Elasticsearch Client](https://elasticsearch-py.readthedocs.io/en/master/)
 

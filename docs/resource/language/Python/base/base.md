@@ -1,3 +1,13 @@
+* * ### 数字
+  * 无穷
+    * float('inf') 表示正无穷
+    * -float('inf') 或 float('-inf') 表示负无穷
+    * inf 可写为 Inf
+    * math.isinf()
+    * 正无穷与负无穷相加会返回一个 NaN 结果
+      * a + b  // nan
+      * math.isnan()
+
 * * ### 字符串
   		
       - [base64](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431954588961d6b6f51000ca4279a3415ce14ed9d709000)
