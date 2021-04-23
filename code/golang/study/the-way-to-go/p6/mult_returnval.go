@@ -1,4 +1,4 @@
-package main
+package p6
 
 import (
 	"fmt"
@@ -13,7 +13,7 @@ func SumProductDiffN(i, j int) (s int, p int, d int) {
 	return
 }
 
-func main() {
+func Test1() {
 	sum, prod, diff := SumProductDiff(3, 4)
 	fmt.Println("Sum:", sum, "| Product:", prod, "| Diff:", diff)
 	sum, prod, diff = SumProductDiffN(3, 4)

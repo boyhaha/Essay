@@ -1,7 +1,7 @@
-package main
+package p6
 import "fmt"
 
-func main() {
+func Test3() {
 	for i := 1; i < 30; i++ {
 		fmt.Println("%d", fa(i))
 	}
