@@ -3,7 +3,8 @@ package main
 import (
     "fmt"
     // "./p6"
-    "./p7"
+    // "./p7"
+    "./alg"
 )
 
 func main()  {
@@ -18,5 +19,11 @@ func main()  {
     // p7.Test1()
     // p7.Test2()
     // p7.Test3()
-    p7.Test4()
+    // p7.Test4()
+
+    // 排序
+    var array = []int{1, 3, 4, 12, 2, 11, 29}
+    var rlt = make([]int, 7)
+    rlt = alg.BubbleSort(array[:])
+    fmt.Println(rlt)
 }
