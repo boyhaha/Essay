@@ -1,7 +1,5 @@
 package alg
 
-// import ("fmt")
-
 
 func BubbleSort(array []int) ([]int) {
 	swap := false

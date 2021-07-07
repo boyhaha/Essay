@@ -1,6 +1,7 @@
 
 # 娃哈哈的日常
 
+## [印象笔记](./interview/yinxiang/index.html)
 ## [算法](./algorithm/algorithm.md)
 ## [正在阅读](./book/csapp.md)
 

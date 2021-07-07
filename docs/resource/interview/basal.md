@@ -1,0 +1,1 @@
+[ss](../../.vuepress/public/yinxiang/index.html)

@@ -24,6 +24,7 @@ func main()  {
     // 排序
     var array = []int{1, 3, 4, 12, 2, 11, 29}
     var rlt = make([]int, 7)
-    rlt = alg.BubbleSort(array[:])
+    // rlt = alg.BubbleSort(array[:])
+    rlt = alg.QuickSort(array[:])
     fmt.Println(rlt)
 }
