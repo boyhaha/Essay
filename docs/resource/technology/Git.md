@@ -1,3 +1,27 @@
+# centos7 配置git
+  
+    ```shell
+    yum install git
+    
+    git --version
+    
+    git config --global user.name "flymegoc"
+    git config --global user.email 343672271@qq.com
+    git config --global core.quotepath false  # 正常显示中文
+    
+    # 查看配置
+    git config --list
+    
+    # 生成秘钥
+    ssh-keygen -t rsa -C “your email address”
+    
+    # 添加
+    settings->SSH Keys->New SSH key
+    
+    # 测试
+    ssh git@github.com
+    ```
+
 * * # 基础
   
     1. fork
@@ -16,7 +40,7 @@
     7. 设置分支跟踪远程分支
        1. git branch --set-upstream-to=origin/dev_08 dev_08
   
-    ## 设置语言
+    ### 设置语言
   
     - alias git='LANG=en_GB git'
   
@@ -42,29 +66,29 @@
     ### stash
   
     - 删除某次 stash记录
-    - git stash drop 0
-  
-    # centos7 配置git
-  
-    ```shell
-    yum install git
+      - git stash drop 0
+    - git stash list
+    - git stash apply 1
+    - git stash pop
+    ### 撤销
+    * git reset
+      * 在私有分支上舍弃一些没有提交的更改
+      * 将文件从缓存区中移除
+    * git revert
+      * 在共有分支上回滚更改
+    * git checkout
+      * 切换分支或查看就版本
+      * 舍弃工作目录中的更改
+    ### 重写git log
+    * git commit --amend
+    ### tag
+    * 查看tags
+      * git tag
+    * 删除tag
+      * git tag -d v1.4
+    * 添加注释
+      * git tag -a tag_name -m "注释"
+      * git tag -am "注释" tag_name
     
-    git --version
-    
-    git config --global user.name "flymegoc"
-    git config --global user.email 343672271@qq.com
-    
-    # 查看配置
-    git config --list
-    
-    # 生成秘钥
-    ssh-keygen -t rsa -C “your email address”
-    
-    # 添加
-    settings->SSH Keys->New SSH key
-    
-    # 测试
-    ssh git@github.com
-    ```
   
     
