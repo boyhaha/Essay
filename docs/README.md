@@ -9,7 +9,5 @@ features:
 - title: 天天向上
   details: 五彩斑斓的黑
 
-footer: Nothing
+footer: 冲冲冲
 ---
-
-# 开始

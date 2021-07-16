@@ -1,7 +1,6 @@
 
 # 娃哈哈的日常
 
-## [印象笔记](./interview/yinxiang/index.html)
 ## [算法](./algorithm/algorithm.md)
 ## [正在阅读](./book/csapp.md)
 
@@ -11,5 +10,5 @@
 ### [编程语言](./language/)
 ### [网络](./network/)
 ### [操作系统](./system/)
-### [其他](./technology/)
-### [工具](./tools/)
+### [其他](./others/)
+### [工具](./software/)

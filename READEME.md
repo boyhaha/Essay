@@ -8,3 +8,6 @@ npm run docs:build
 
 # 发布到gh-pages
 npm run deploy:build
+
+## 官方文档
+> [快速上手](https://vuepress.vuejs.org/zh/)

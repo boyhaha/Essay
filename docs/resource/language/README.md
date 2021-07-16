@@ -4,7 +4,7 @@ sidebar: auto
 
 # 编程语言
 
-## [Golang](./Golang/Go.md)
+## [Golang](./Golang/Go语言设计与实现.md)
 ## Python
 ### [基础](./Python/base.md)
 ### [elasticsearch-dsl](./Python/elasticsearch-dsl.md)

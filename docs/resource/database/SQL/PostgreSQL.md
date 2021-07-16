@@ -1,4 +1,6 @@
-## A
+# PostgreSQL
+
+## 常见命令
 
 ### SQL
 * 删除table
@@ -9,7 +11,7 @@
   * 删除序列
     * DROP SEQUENCE seq_name[, ...]
 
-## B
+## 其他
 
 ### 安装
 

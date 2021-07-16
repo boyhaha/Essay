@@ -1,3 +1,8 @@
+---
+sidebar: auto
+---
+
+# 进阶操作
 - # 进阶操作
 
   - bulk_write
