@@ -10,11 +10,11 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
     同步分支
 
-        git branch \-\-set\-upstream\-to=origin/分支名称 分支名称
+        git branch --set-upstream-to=origin/分支名称 分支名称
 
             将本地分支跟踪服务器分支
 
-                git checkout \-b dev origin/dev
+                git checkout -b dev origin/dev
 
                     将github上的dev分支同步到本地，
 
@@ -32,7 +32,7 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
                 添加到暂存区
 
-            git checkout \-\- 文件名
+            git checkout -- 文件名
 
                 回到暂存区的状态
 
@@ -46,7 +46,7 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
                 查看暂存区未提交的记录
 
-            git commit \-m '本次提交的说明信息'
+            git commit -m '本次提交的说明信息'
 
                 将暂存区的记录提交到仓库区
 
@@ -88,7 +88,7 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
         解决冲突
 
-            合并时 \-\-\- 出现冲突后需要手动提交
+            合并时 --- 出现冲突后需要手动提交
 
     历史
 
@@ -106,13 +106,13 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
         比较不同
 
-            git diff \*\*\*\*\*\*\*\*\*
+            git diff *********
 
-                git diff HEAD \-\- df\_user/models.py
+                git diff HEAD -- df_user/models.py
 
                     对比工作区和仓库区某版本  某文件或某目录下   的不同
 
-                git diff HEAD HEAD^^  \-\- df\_user/models.py
+                git diff HEAD HEAD^^  -- df_user/models.py
 
                     对比上次提交和上上次提交
 
@@ -128,7 +128,7 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
             git status
 
-            git checkout \-\- df\_user/models.py
+            git checkout -- df_user/models.py
 
                 将暂存区的恢复到工作区
 
@@ -140,7 +140,7 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
             在暂存区删除
 
-        git commit \-m '说明信息'
+        git commit -m '说明信息'
 
             提交到仓库区
 
@@ -156,27 +156,27 @@ git revert是用一次新的commit来回滚之前的commit，git reset是直接�
 
         git checkout master
 
-        git checkout \-b bug001
+        git checkout -b bug001
 
         修改文件
 
         git add 文件或者目录
 
-        git commit \-m '修复时区语言'
+        git commit -m '修复时区语言'
 
         git checkout master
 
-        git merge \-\-no\-ff \-m "修复bug\-语言时区" bug001
+        git merge --no-ff -m "修复bug-语言时区" bug001
 
-            因为临时分支用完后会被删除，无法通过分支查询历史记录，所以使用临时分支时需要使用no\-ff的方式，
+            因为临时分支用完后会被删除，无法通过分支查询历史记录，所以使用临时分支时需要使用no-ff的方式，
 
-            同时写上\-m备注信息, 作为master分支上的一个节点
+            同时写上-m备注信息, 作为master分支上的一个节点
 
         git push
 
             推送
 
-        git branch \-d bug001
+        git branch -d bug001
 
             删除临时分支
 

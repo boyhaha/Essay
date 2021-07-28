@@ -10,7 +10,7 @@
         3. 缺点： 不够灵活
     2. 使用docker build命令和 Dockerfile 文件
         1. Dockerfile使用基本的基于DSL（
-        2. 首先创建一个名为static\_web的目录用来保存Dockerfile，这个目录就是我们的构建环境（build environment）,Docker则称此环境为上下文（context）或者构建上下文（build context）。Docker会在构建镜像时将构建上下文和该上下文中的文件和目录上传到Docker守护进程。这样Docker守护进程就能直接访问你想在镜像中存储的任何代码、文件或者其他数据。这里我们还创建了一个Dockerfile文件，我们将用它构建一个能作为Web服务器的Docker镜像。
+        2. 首先创建一个名为static_web的目录用来保存Dockerfile，这个目录就是我们的构建环境（build environment）,Docker则称此环境为上下文（context）或者构建上下文（build context）。Docker会在构建镜像时将构建上下文和该上下文中的文件和目录上传到Docker守护进程。这样Docker守护进程就能直接访问你想在镜像中存储的任何代码、文件或者其他数据。这里我们还创建了一个Dockerfile文件，我们将用它构建一个能作为Web服务器的Docker镜像。
         3. Dockerfile由一系列指令和参数组成。每条指令都必须为大写字母，且后面要跟随一个参数。Dockerfile中的指令会按照顺序从上到下执行，所以应该根据需要合理安排指令的顺序。每条指令都会创建一个新的镜像层并对镜像进行提交。Docker大体上按照如下流程执行Dockerfile中的指令。
             1. Docker从基础镜像运行一个容器。
             2. 执行第一条指令，对容器进行修改。
@@ -20,8 +20,8 @@
 3. Docker Compose
     1. 用于定义和运行多容器Docker应用程序的工具
         1. 使用 Dockerfile 定义应用程序的环境
-        2. 使用 docker\-compose.yml 定义构成应用程序的服务，这样它们可以在隔离环境中一起运行
-        3. 最后，执行 docker\-compose up 命令来启动并运行整个应用程序
+        2. 使用 docker-compose.yml 定义构成应用程序的服务，这样它们可以在隔离环境中一起运行
+        3. 最后，执行 docker-compose up 命令来启动并运行整个应用程序
 
 ```
 # Version: 0.0.1
@@ -61,12 +61,12 @@ Successfully built 94728651ce15
 ```
 
 * 搭建本地镜像源
-    * \# docker pull registry
-    * \# docker run \-d \-v /opt/registry:/var/lib/registry \-p 5000:5000 \-\-restart=always \-\-name registry registry:latest
-    * \# 使用新的Registry给该镜像打上标签
-    * \# docker tag 9c30616364f4 [docker.example.com:5000/test/apache2](http://docker.example.com:5000/test/apache2)
-    * \# 通过docker push 命令将它推送到新的Registry中去
-    * \# docker push [docker.example.com:5000/test/apache2](http://docker.example.com:5000/test/apache2)
+    * # docker pull registry
+    * # docker run -d -v /opt/registry:/var/lib/registry -p 5000:5000 --restart=always --name registry registry:latest
+    * # 使用新的Registry给该镜像打上标签
+    * # docker tag 9c30616364f4 [docker.example.com:5000/test/apache2](http://docker.example.com:5000/test/apache2)
+    * # 通过docker push 命令将它推送到新的Registry中去
+    * # docker push [docker.example.com:5000/test/apache2](http://docker.example.com:5000/test/apache2)
 
 1. docker和容器化
     1. Docker是现在使用最多的容器化软件。与其它已经存在的容器化系统相比，Docker可以更加简单的创建和管理容器，并与其它开源软件集成

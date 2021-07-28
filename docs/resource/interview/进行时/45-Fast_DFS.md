@@ -14,4 +14,4 @@ FastDFS 架构包括 **Tracker server** 和 **Storage server**。客户端请
 
 ![FastDFS文件上传流程.png](image/FastDFS文件上传流程.png)
 
-file\_id： 文件索引信息包括:组名，虚拟磁盘路径，数据两级目录，文件名
+file_id： 文件索引信息包括:组名，虚拟磁盘路径，数据两级目录，文件名

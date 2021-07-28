@@ -20,24 +20,24 @@ $ curl localhost:9200/films/md/_search?pretty=true 
 
 * ES实现
     1. Elasticsearch 不支持对中文进行分词建立索引（倒排索引：**也常被称为反向索引、置入档案或反向档案，是一种索引方法，被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射**），需要配合扩展
-        * ./bin/elasticsearch\-plugin install[https://github.com/medcl/elasticsearch\-analysis\-ik/releases/download/v6.3.0/elasticsearch\-analysis\-ik\-6.3.0.zip](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.0/elasticsearch-analysis-ik-6.3.0.zip)
+        * ./bin/elasticsearch-plugin install[https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.0/elasticsearch-analysis-ik-6.3.0.zip](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.0/elasticsearch-analysis-ik-6.3.0.zip)
     2. 修改配置文件 
     3. 使用haystack 对接Elasticsearch
         1. Haystack为Django提供了模块化的搜索。它的特点是统一的，熟悉的API，可以让你在不修改代码的情况下使用不同的搜索后端（比如 Solr, Elasticsearch, Whoosh, Xapian 等等）
         2. pip install elasticsearch==2.4.1
-            pip install drf\-haystackdrf\-haystack是为了在REST framework中使用haystack而进行的封装（如果在Django中使用haystack，则安装django\-haystack即可）
+            pip install drf-haystackdrf-haystack是为了在REST framework中使用haystack而进行的封装（如果在Django中使用haystack，则安装django-haystack即可）
         3. 注册应用
         4. 在配置文件中配置haystack使用的搜索引擎后端
-            * HAYSTACK\_SIGNAL\_PROCESSOR ='haystack.signals.RealtimeSignalProcessor'
-                \# 当添加、修改、删除数据时，自动生成索引
+            * HAYSTACK_SIGNAL_PROCESSOR ='haystack.signals.RealtimeSignalProcessor'
+                # 当添加、修改、删除数据时，自动生成索引
         5. 创建索引类
             * 指明让搜索引擎对哪些字段建立索引
-            * text = indexes.CharField\(document=True, use\_template=True\)
+            * text = indexes.CharField(document=True, use_template=True)
                 * document=True，表名该字段是主要进行关键字查询的字段
-                * use\_template=True 表示后续通过模板来指明 索引值具体由哪些模型类字段组成
+                * use_template=True 表示后续通过模板来指明 索引值具体由哪些模型类字段组成
         6. 创建text字段使用的模板文件
         7. 手动生成初始索引
-            * python manage.py rebuild\_index
+            * python manage.py rebuild_index
         8. 创建序列化器
         9. 创建视图
         10. 定义路由
@@ -54,13 +54,13 @@ elasticsearch 是一个兼有搜索引擎和NoSQL数据库功能的开源系统�
 
 ### **Elasticsearch的index**
 
-    Elasticsearch的索引\(index\)是用于组织数据的逻辑命名空间（如数据库）。Elasticsearch的索引有一个或多个分片\(shard\)（默认为5）。分片是实际存储数据的Lucene索引，它本身就是一个搜索引擎。每个分片可以有零个或多个副本\(replicas\)（默认为1）。Elasticsearch索引还具有“类型”（如数据库中的表），允许您在索引中对数据进行逻辑分区。Elasticsearch索引中给定“类型”中的所有文档\(documents\)具有相同的属性（如表的模式）。 
+    Elasticsearch的索引(index)是用于组织数据的逻辑命名空间（如数据库）。Elasticsearch的索引有一个或多个分片(shard)（默认为5）。分片是实际存储数据的Lucene索引，它本身就是一个搜索引擎。每个分片可以有零个或多个副本(replicas)（默认为1）。Elasticsearch索引还具有“类型”（如数据库中的表），允许您在索引中对数据进行逻辑分区。Elasticsearch索引中给定“类型”中的所有文档(documents)具有相同的属性（如表的模式）。 
 
 ![](https://img-blog.csdn.net/20170814225416168?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemdfaG92ZXI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
     图a显示了一个由三个主分片组成的Elasticsearch集群，每个主分片分别有一个副本。所有这些分片一起形成一个Elasticsearch索引，每个分片是Lucene索引本身。 
 
-    图b演示了Elasticsearch索引，分片，Lucene索引和文档\(document\)之间的逻辑关系。
+    图b演示了Elasticsearch索引，分片，Lucene索引和文档(document)之间的逻辑关系。
 
 #### **类比关系数据库术语**
 
@@ -70,9 +70,9 @@ Types ~ Tables
 
 Mapping ~ Schema 
 
-**关系数据库 ⇒ 数据库 ⇒ 表 ⇒ 行 ⇒ 列\(Columns\)**
+**关系数据库 ⇒ 数据库 ⇒ 表 ⇒ 行 ⇒ 列(Columns)**
 
-**Elasticsearch ⇒ 索引 ⇒ 类型 ⇒ 文档 ⇒ 字段\(Fields\)**
+**Elasticsearch ⇒ 索引 ⇒ 类型 ⇒ 文档 ⇒ 字段(Fields)**
 
     schema  MySQL的文档中指出，在物理上，模式与数据库是同义的，所以，模式和数据库是一回事
 
@@ -97,7 +97,7 @@ Mapping ~ Schema 
 * **监控：**
 * **国外：Wikipedia使用 ES 提供全文搜索并高亮关键字、StackOverflow结合全文搜索与地理位置查询、**
 * **国内：**
-* **使用比较广泛的平台ELK\(ElasticSearch, Logstash, **Kibana****\)****
+* **使用比较广泛的平台ELK(ElasticSearch, Logstash, **Kibana****)****
 
 **solr VS ES**
 
@@ -120,7 +120,7 @@ Mapping ~ Schema 
 
 ---
 
-* **集群（Cluster\):**
+* **集群（Cluster):**
 
 1. **集群内节点协同工作，共享数据，并共同分担工作负荷。**
 2. **由于节点是从属集群的，集群会自我重组来**
@@ -128,21 +128,21 @@ Mapping ~ Schema 
 4. **集群中通过选举产生**
 5. **作为用户，我们可以访问包括 master 节点在内的集群中的任一节点。每个节点都知道各个文档的位置，并能够将我们的请求直接转发到拥有我们想要的数据的节点。无论我们访问的是哪个节点，它都会控制从拥有数据的节点收集响应的过程，并返回给客户端最终的结果。这一切都是由 Elasticsearch 透明管理的**
 
-* **节点\(node\):**
-* **索引（Index\)：**
+* **节点(node):**
+* **索引（Index)：**
 * **文档类型（Type）：**
-* **关系数据库 ⇒ 数据库 ⇒ 表 ⇒ 行 ⇒ 列\(Columns\)**
-    **Elasticsearch ⇒ 索引 ⇒ 类型 ⇒ 文档 ⇒ 字段\(Fields\)**
-    **文档（Document\) ：**
+* **关系数据库 ⇒ 数据库 ⇒ 表 ⇒ 行 ⇒ 列(Columns)**
+    **Elasticsearch ⇒ 索引 ⇒ 类型 ⇒ 文档 ⇒ 字段(Fields)**
+    **文档（Document) ：**
 * **模拟示意图如：**
 * ![](https://images2015.cnblogs.com/blog/1004194/201611/1004194-20161124180138409-1933404824.png)
 * **Mapping：**
-* **分片\(shard\) ：**
+* **分片(shard) ：**
 
 1. **分片是一个独立的Lucene实例，并且它自身也是一个完整的搜索引擎。**
 2. **文档存储并且被索引在分片中，但是我们的程序并不会直接与它们通信。取而代之，它们直接与索引进行通信的**
 3. **把**
-4. **分片分为 主分片\(primary shard\) 以及 从分片\(replica shard\) 两种。在你的索引中，每一个文档都属于一个主分片**
+4. **分片分为 主分片(primary shard) 以及 从分片(replica shard) 两种。在你的索引中，每一个文档都属于一个主分片**
 5. **从**
 6. **索引中的**
 7. **一个索引默认设置了5个主分片，每个主分片有一个从分片对应**
@@ -155,14 +155,14 @@ Mapping ~ Schema 
 * ![](https://images2015.cnblogs.com/blog/1004194/201611/1004194-20161124185700128-46209682.png)
 * **Gateway:**
     1. **对于分布式集群来说，当一个或多个节点down掉了，能够保证我们的数据不能丢，最通用的解放方案就是对失败节点的数据进行复制，通过控制复制的份数可以保证集群有很高的可用性，复制这个方案的精髓主要是保证操作的时候没有单点，对一个节点的操作会同步到其他的复制节点上去。**
-    2. **$ curl \-XPUT**[http://localhost:9200/twitter/](http://localhost:9200/twitter/)**\-d****'**
+    2. **$ curl -XPUT**[http://localhost:9200/twitter/](http://localhost:9200/twitter/)**-d****'**
         **index :**
-        **number\_of\_shards :****3**
-        **number\_of\_replicas :****2**
+        **number_of_shards :****3**
+        **number_of_replicas :****2**
         **ES一个**
     3. **每个操作会自动路由主碎片所在的节点，在上面执行操作，并且同步到其他复制节点，通过使用“non blocking IO”模式所有复制的操作都是并行执行的，也就是说如果你的**
     4. **第一次启动的时候，它会去持久化设备读取集群的状态信息（创建的索引，配置等）然后执行应用它们（创建索引，创建mapping映射等），每一次shard节点第一次实例化加入复制组，它都会从长持久化存储里面恢复它的状态信息**
-* **Lucence Directory:�**�
+* **Lucence Directory:�**�
     1. **它是Lucene存储的一个抽象，由此派生了两个类：**
     2. ![](https://images2015.cnblogs.com/blog/1004194/201611/1004194-20161125104550456-1075794774.png)
     3. **一个Directory对象是一份文件的清单。文件可能只在被创建的时候写一次。一旦文件被创建，它将只被读取或者删除。在读取的时候进行写入操作是允许的**
@@ -173,12 +173,12 @@ Mapping ~ Schema 
 3. **选举开始，先从各节点认为的master中选，规则很简单，按照id的字典序排序，取第一个**
 4. **如果各节点都没有认为的master，则从所有节点中选择，规则同上。这里有个限制条件就是**
 5. **最后选举结果是肯定能选举出一个master，如果只有一个local节点那就选出的是自己**
-6. **如果当前节点是master，则开始等待节点数达到 minimum\_master\_nodes，然后提供服务, 如果当前节点不是master，则尝试加入master.**
-7. **ES支持任意数目的集群（1\-N）,所以不能像 Zookeeper/Etcd 那样限制节点必须是奇数，也就无法用投票的机制来选主，而是通过一个规则，只要所有的节点都遵循同样的规则，得到的信息都是对等的，选出来的主节点肯定是一致的. 但分布式系统的问题就出在**
+6. **如果当前节点是master，则开始等待节点数达到 minimum_master_nodes，然后提供服务, 如果当前节点不是master，则尝试加入master.**
+7. **ES支持任意数目的集群（1-N）,所以不能像 Zookeeper/Etcd 那样限制节点必须是奇数，也就无法用投票的机制来选主，而是通过一个规则，只要所有的节点都遵循同样的规则，得到的信息都是对等的，选出来的主节点肯定是一致的. 但分布式系统的问题就出在**
 
 * **memcached**
 
-1. **通过memecached协议来访问ES的接口,支持二进制和文本两种协议.通过一个名为transport\-memcached插件提供**
+1. **通过memecached协议来访问ES的接口,支持二进制和文本两种协议.通过一个名为transport-memcached插件提供**
 2. **Memcached命令会被映射到REST接口，并且会被同样的REST层处理，memcached命令列表包括：get/set/delete/quit**
 
 * **River :**
@@ -192,25 +192,25 @@ Mapping ~ Schema 
 * **PUT /****blogs**
     **{**
     **"****settings****"****: {**
-    **"****number\_of\_shards****"****: 3****,**
-    **"****number\_of\_replicas****"****: 1**
+    **"****number_of_shards****"****: 3****,**
+    **"****number_of_replicas****"****: 1**
     **}**
     **}**
     **在空的单节点集群中上创建一个叫做 blogs 的索引，设置3个主分片和一组从分片（每个主分片有一个从分片对应），代码如下：**
 * ** 集群示例图如下： （**
 * ![](https://images2015.cnblogs.com/blog/1004194/201611/1004194-20161125113848987-1256292980.png)
-* **主分片\(primary shards\) 启动并且运行了，这时集群已经可以成功的处理任意请求，但是 从分片\(replica shards\) 没有完全被激活。事实上，当前这三个从分片都处于 unassigned（未分配）的状态，它们还未被分配到节点上。在同一个节点上保存相同的数据副本是没有必要的，如果这个节点故障了，就等同于所有的数据副本也丢失了**
+* **主分片(primary shards) 启动并且运行了，这时集群已经可以成功的处理任意请求，但是 从分片(replica shards) 没有完全被激活。事实上，当前这三个从分片都处于 unassigned（未分配）的状态，它们还未被分配到节点上。在同一个节点上保存相同的数据副本是没有必要的，如果这个节点故障了，就等同于所有的数据副本也丢失了**
 * **启动第二个节点，配置第二个节点与第一个节点的 cluster.name 相同（./config/elasticsearch.yml文件中的配置），它就能自动发现并加入到第一个节点的集群中,如下图：**
 * ![](https://images2015.cnblogs.com/blog/1004194/201611/1004194-20161125114323550-385234299.png)
-* **cluster\-health 的状态为 green，这意味着所有的6个分片（三个主分片和三个从分片）都已激活，文档在主节点和从节点上都能被检索**
+* **cluster-health 的状态为 green，这意味着所有的6个分片（三个主分片和三个从分片）都已激活，文档在主节点和从节点上都能被检索**
 * **随着应用需求的增长，启动第三个节点进行横向扩展，集群内会自动重组，如图**
 * ![](https://images2015.cnblogs.com/blog/1004194/201611/1004194-20161125114656253-121641653.png)
 * **在 Node 1 和 Node 2 中分别会有一个分片被移动到 Node 3 上，这样一来，每个节点上就都只有两个分片了。这意味着每个节点的硬件资源（CPU、RAM、I/O）被更少的分片共享，所以每个分片就会有更好的性能表现**
 * **一共有6个分片（3个主分片和3个从分片），因此最多可以扩展到6个节点，每个节点上有一个分片，这样每个分片都可以使用到所在节点100%的资源了**
 * **主分片的数量在索引创建的时候就已经指定了，实际上，这个数字定义了能存储到索引中的数据最大量（具体的数量取决于你的数据，硬件的使用情况）。例如，读请求——搜索或者文档恢复就可以由主分片或者从分片来执行，所以当你拥有更多份数据的时候，你就拥有了更大的吞吐量**
-* **PUT /blogs/****\_settings**
+* **PUT /blogs/****_settings**
     **{**
-    **"****number\_of\_replicas****"****: 2**
+    **"****number_of_replicas****"****: 2**
     **}**
     **从分片的数量可以在运行的集群中动态的调整，这样我们就可以根据实际需求扩展或者缩小规模。接下来，我们来增加一下从分片组的数量：**
 * ** 现在 blogs 的索引总共有9个分片：3个主分片和6个从分片， 又会变成一个节点一个分片的状态了,最终得到了三倍搜索性能的三节点集群**
@@ -262,7 +262,7 @@ Master节点控制Elasticsearch集群，并负责在集群范围内创建/删除
 
     如果将node.master和node.data设置为false，则将节点配置为客户端节点，并充当负载平衡器，将传入的请求路由到集群中的不同节点。 
 
-    若你连接的是作为客户端的节点，该节点称为协调节点\(coordinating node\)。协调节点将客户机请求路由到集群中对应分片所在的节点。对于读取请求，协调节点每次选择不同的分片来提供请求以平衡负载。 
+    若你连接的是作为客户端的节点，该节点称为协调节点(coordinating node)。协调节点将客户机请求路由到集群中对应分片所在的节点。对于读取请求，协调节点每次选择不同的分片来提供请求以平衡负载。 
 
     在我们开始审查发送到协调节点的CRUD请求如何通过集群传播并由引擎执行之前，让我们看看Elasticsearch如何在内部存储数据，以低延迟为全文搜索提供结果。
 
@@ -288,9 +288,9 @@ Master节点控制Elasticsearch集群，并负责在集群范围内创建/删除
 
 默认情况下，Elasticsearch使用标准分析器
 
-标准标记器\(Standard tokenizer\)，用于在单词边界上分割单词
+标准标记器(Standard tokenizer)，用于在单词边界上分割单词
 
-小写令牌过滤器\(Lowercase token filter\)将单词转换为小写 
+小写令牌过滤器(Lowercase token filter)将单词转换为小写 
 
 还有许多其他分析仪可用，您可以在文档中阅读它们。 
 
@@ -298,19 +298,19 @@ Master节点控制Elasticsearch集群，并负责在集群范围内创建/删除
 
 ## **实现原理分析**
 
-### **write\(写\)/create\(创建\)操作实现原理**
+### **write(写)/create(创建)操作实现原理**
 
 当您向协调节点发送请求以索引新文档时，将执行以下操作：
 
-所有在Elasticsearch集群中的节点都包含：有关哪个分片存在于哪个节点上的元数据。协调节点\(coordinating node\)使用文档ID（默认）将文档路由到对应的分片。Elasticsearch将文档ID以murmur3作为散列函数进行散列，并通过索引中的主分片数量进行取模运算，以确定文档应被索引到哪个分片。 
+所有在Elasticsearch集群中的节点都包含：有关哪个分片存在于哪个节点上的元数据。协调节点(coordinating node)使用文档ID（默认）将文档路由到对应的分片。Elasticsearch将文档ID以murmur3作为散列函数进行散列，并通过索引中的主分片数量进行取模运算，以确定文档应被索引到哪个分片。 
 
-shard = hash\(document\_id\) % \(num\_of\_primary\_shards\)
+shard = hash(document_id) % (num_of_primary_shards)
 
 当节点接收到来自协调节点的请求时，请求被写入到translog（我们将在后续的post中间讲解translog），并将该文档添加到内存缓冲区。如果请求在主分片上成功，则请求将并行发送到副本分片。只有在所有主分片和副本分片上的translog被fsync’ed后，客户端才会收到该请求成功的确认。
 
-内存缓冲区以固定的间隔刷新（默认为1秒），并将内容写入文件系统缓存中的新段。此分段的内容更尚未被fsync’ed\(未被写入文件系统\)，分段是打开的，内容可用于搜索。
+内存缓冲区以固定的间隔刷新（默认为1秒），并将内容写入文件系统缓存中的新段。此分段的内容更尚未被fsync’ed(未被写入文件系统)，分段是打开的，内容可用于搜索。
 
-translog被清空，并且文件系统缓存每隔30分钟进行一次fsync，或者当translog变得太大时进行一次fsync。这个过程在Elasticsearch中称为flush。在刷新过程中，内存缓冲区被清除，内容被写入新的文件分段\(segment\)。当文件分段被fsync’ed并刷新到磁盘，会创建一个新的提交点（其实就是会更新文件偏移量，文件系统会自动做这个操作）。旧的translog被删除，一个新的开始。
+translog被清空，并且文件系统缓存每隔30分钟进行一次fsync，或者当translog变得太大时进行一次fsync。这个过程在Elasticsearch中称为flush。在刷新过程中，内存缓冲区被清除，内容被写入新的文件分段(segment)。当文件分段被fsync’ed并刷新到磁盘，会创建一个新的提交点（其实就是会更新文件偏移量，文件系统会自动做这个操作）。旧的translog被删除，一个新的开始。
 
 下图显示了写入请求和数据流程： 
 
@@ -318,9 +318,9 @@ translog被清空，并且文件系统缓存每隔30分钟进行一次fsync，�
 
 ### **Update和Delete实现原理**
 
-    删除和更新操作也是写操作。但是，Elasticsearch中的文档是不可变的\(immutable\)，因此不能删除或修改。那么，如何删除/更新文档呢？ 
+    删除和更新操作也是写操作。但是，Elasticsearch中的文档是不可变的(immutable)，因此不能删除或修改。那么，如何删除/更新文档呢？ 
 
-    磁盘上的每个分段\(segment\)都有一个.del文件与它相关联。当发送删除请求时，该文档未被真正删除，而是在.del文件中标记为已删除。此文档可能仍然能被搜索到，但会从结果中过滤掉。当分段合并时（我们将在后续的帖子中包括段合并），在.del文件中标记为已删除的文档不会被包括在新的合并段中。 
+    磁盘上的每个分段(segment)都有一个.del文件与它相关联。当发送删除请求时，该文档未被真正删除，而是在.del文件中标记为已删除。此文档可能仍然能被搜索到，但会从结果中过滤掉。当分段合并时（我们将在后续的帖子中包括段合并），在.del文件中标记为已删除的文档不会被包括在新的合并段中。 
 
     现在，我们来看看更新是如何工作的。创建新文档时，Elasticsearch将为该文档分配一个版本号。对文档的每次更改都会产生一个新的版本号。当执行更新时，旧版本在.del文件中被标记为已删除，并且新版本在新的分段中编入索引。旧版本可能仍然与搜索查询匹配，但是从结果中将其过滤掉。 
 
@@ -334,11 +334,11 @@ translog被清空，并且文件系统缓存每隔30分钟进行一次fsync，�
 
 获取阶段（Fetch Phase）
 
-#### **查询阶段\(Query Phase\)**
+#### **查询阶段(Query Phase)**
 
-    在此阶段，协调节点将搜索请求路由到索引\(index\)中的所有分片\(shards\)（包括：主要或副本）。分片独立执行搜索，并根据相关性分数创建一个优先级排序结果（稍后我们将介绍相关性分数）。所有分片将匹配的文档和相关分数的文档ID返回给协调节点。协调节点创建一个新的优先级队列，并对全局结果进行排序。可以有很多文档匹配结果，但默认情况下，每个分片将前10个结果发送到协调节点，协调创建优先级队列，从所有分片中分选结果并返回前10个匹配。
+    在此阶段，协调节点将搜索请求路由到索引(index)中的所有分片(shards)（包括：主要或副本）。分片独立执行搜索，并根据相关性分数创建一个优先级排序结果（稍后我们将介绍相关性分数）。所有分片将匹配的文档和相关分数的文档ID返回给协调节点。协调节点创建一个新的优先级队列，并对全局结果进行排序。可以有很多文档匹配结果，但默认情况下，每个分片将前10个结果发送到协调节点，协调创建优先级队列，从所有分片中分选结果并返回前10个匹配。
 
-#### **获取阶段\(Fetch Phase\)**
+#### **获取阶段(Fetch Phase)**
 
     在协调节点对所有结果进行排序，已生成全局排序的文档列表后，它将从所有分片请求原始文档。 
 
@@ -348,11 +348,11 @@ translog被清空，并且文件系统缓存每隔30分钟进行一次fsync，�
 
 如上所述，搜索结果按相关性排序。我们来回顾一下相关性的定义。
 
-#### **搜索相关性\(Search Relevance\)**
+#### **搜索相关性(Search Relevance)**
 
     相关性由Elasticsearch给予搜索结果中返回的每个文档的分数确定。用于评分的默认算法为tf / idf（术语频率/逆文档频率）。该术语频率测量术语出现在文档中的次数（更高频率=更高的相关性），逆文档频率测量术语在整个索引中出现的频率占索引中文档总数的百分比（更高的频率 
 
-==较少的相关性）。最终得分是tf\-idf分数与其他因素（如词语邻近度（短语查询）），术语相似度（用于模糊查询）等的组合。
+==较少的相关性）。最终得分是tf-idf分数与其他因素（如词语邻近度（短语查询）），术语相似度（用于模糊查询）等的组合。
 
 ```
 docker run -dti --network=host --name=elasticsearch -v

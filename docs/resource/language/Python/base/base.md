@@ -1,10 +1,10 @@
 * * ### 数字
   * 无穷
     * float('inf') 表示正无穷
-    * -float('inf') 或 float('-inf') 表示负无穷
-    * inf 可写为 Inf
+      * -float('inf') 或 float('-inf') 表示负无穷
+      * inf 可写为 Inf
+      * 正无穷与负无穷相加会返回一个 NaN 结果
     * math.isinf()
-    * 正无穷与负无穷相加会返回一个 NaN 结果
       * a + b  // nan
       * math.isnan()
 
