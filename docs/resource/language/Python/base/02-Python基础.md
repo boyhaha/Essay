@@ -39,7 +39,7 @@ sidebar: auto
            3. math.ceil: 向上取整
         2. str(x)                 将对象 x 转换为表达式字符串，如果是字符串，没有变化
         3. repr(x)              将对象 x 转换为表达式字符串，如果是字符串，在两端加引号
-        4. <span style="background-color: #ffaaaa">eval(str )            用来计算在字符串中的有效Python表达式,并返回一个对象</span>
+        4. eval(str )            用来计算在字符串中的有效Python表达式,并返回一个对象
            1. 如果是一个字符串表达式，放入到eval中，先去两侧的引号，若Python中有相应的类型，直接返回；
            2. 如果没有相应的类型，查看是否有对应的变量名，如果有，直接返回，如果没有，则报错NameError。
         5. chr(x)    将一个整数转换为一个Unicode字符

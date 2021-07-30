@@ -1,11 +1,12 @@
 package main
 
 import (
-	"./lesson"
 	"fmt"
+
+	"./lesson"
 )
 
 func main() {
-    lesson.Say("abc")
-	fmt.Println(mtt)
+	lesson.Say("abc")
+	fmt.Println("mtt")
 }
