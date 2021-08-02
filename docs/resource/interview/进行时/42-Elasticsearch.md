@@ -1,52 +1,31 @@
 # 42-Elasticsearch
 
-问题  
+## 问题  
 
 1. 说一说ES
-    1. 一个兼有
-    2. 是 面向文档型数据库
-    3. 采用倒排索引，
-    4. **如果需要中分分支需要安装插件，**
-2. ES搜索引擎 如何根据文档中的type进行：
+   1. 一个兼有搜索引擎和NoSQL数据库功能的开源系统，基于Java/Lucene构建，可以用于全文搜索，结构化搜索以及近实时分析
+   2. 是**面向文档型**数据库
+   3. 采用倒排索引，用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射
+   4. 如果需要中分分支需要安装插件，elasticsearch-analysis-ik来
+2. ES搜索引擎 如何根据文档中的type进行查找：
+    ```
+    查询某个index下所有的type: 
+    $ curl localhost:9200/films/_search 
 
-```
-2.2 查询某个index下所有的type: 
-$ curl localhost:9200/films/_search 
+    查询某个index 下， 某个 type下所有的记录： 
+    $ curl localhost:9200/films/md/_search?pretty=true 
 
-2.3 查询某个index 下， 某个 type下所有的记录： 
-$ curl localhost:9200/films/md/_search?pretty=true 
+    ```
 
-```
-
-* ES实现
-    1. Elasticsearch 不支持对中文进行分词建立索引（倒排索引：**也常被称为反向索引、置入档案或反向档案，是一种索引方法，被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射**），需要配合扩展
-        * ./bin/elasticsearch-plugin install[https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.0/elasticsearch-analysis-ik-6.3.0.zip](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.0/elasticsearch-analysis-ik-6.3.0.zip)
-    2. 修改配置文件 
-    3. 使用haystack 对接Elasticsearch
-        1. Haystack为Django提供了模块化的搜索。它的特点是统一的，熟悉的API，可以让你在不修改代码的情况下使用不同的搜索后端（比如 Solr, Elasticsearch, Whoosh, Xapian 等等）
-        2. pip install elasticsearch==2.4.1
-            pip install drf-haystackdrf-haystack是为了在REST framework中使用haystack而进行的封装（如果在Django中使用haystack，则安装django-haystack即可）
-        3. 注册应用
-        4. 在配置文件中配置haystack使用的搜索引擎后端
-            * HAYSTACK_SIGNAL_PROCESSOR ='haystack.signals.RealtimeSignalProcessor'
-                # 当添加、修改、删除数据时，自动生成索引
-        5. 创建索引类
-            * 指明让搜索引擎对哪些字段建立索引
-            * text = indexes.CharField(document=True, use_template=True)
-                * document=True，表名该字段是主要进行关键字查询的字段
-                * use_template=True 表示后续通过模板来指明 索引值具体由哪些模型类字段组成
-        6. 创建text字段使用的模板文件
-        7. 手动生成初始索引
-            * python manage.py rebuild_index
-        8. 创建序列化器
-        9. 创建视图
-        10. 定义路由
+## ES实现
+1. Elasticsearch 不支持对中文进行分词建立索引（倒排索引：**也常被称为反向索引、置入档案或反向档案，是一种索引方法，被用来存储在全文搜索下某个单词在一个文档或者一组文档中的存储位置的映射**），需要配合扩展
+   * [./bin/elasticsearch-plugin install](https://github.com/medcl/elasticsearch-analysis-ik/releases/download/v6.3.0/elasticsearch-analysis-ik-6.3.0.zip)
 
 开源的 [Elasticsearch](https://blog.csdn.net/cnweike/article/details/33736429) 是目前全文搜索引擎的首选
 
 它可以快速地储存、搜索和分析海量数据。维基百科、Stack Overflow、Github 都采用它
 
-Elastic 是 Lucene 的封装，提供了 REST API 的操作接口，开箱即用。[http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html](http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html)
+Elastic 是 Lucene 的封装，提供了 REST API 的操作接口，开箱即用。[安装](http://www.ruanyifeng.com/blog/2017/08/elasticsearch.html)
 
 Elasticsearch 是用Java实现的。
 
@@ -56,52 +35,17 @@ elasticsearch 是一个兼有搜索引擎和NoSQL数据库功能的开源系统�
 
     Elasticsearch的索引(index)是用于组织数据的逻辑命名空间（如数据库）。Elasticsearch的索引有一个或多个分片(shard)（默认为5）。分片是实际存储数据的Lucene索引，它本身就是一个搜索引擎。每个分片可以有零个或多个副本(replicas)（默认为1）。Elasticsearch索引还具有“类型”（如数据库中的表），允许您在索引中对数据进行逻辑分区。Elasticsearch索引中给定“类型”中的所有文档(documents)具有相同的属性（如表的模式）。 
 
-![](https://img-blog.csdn.net/20170814225416168?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvemdfaG92ZXI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+### 应用场景
 
-    图a显示了一个由三个主分片组成的Elasticsearch集群，每个主分片分别有一个副本。所有这些分片一起形成一个Elasticsearch索引，每个分片是Lucene索引本身。 
+* 站内搜索：主要和 Solr 竞争，属于后起之秀
+* NoSQL json文档数据库：主要抢占 Mongo 的市场，它在读写性能上优于 Mongo ，同时也支持地理位置查询，还方便地理位置和文本混合查询，属于歪打正着 （对比测试参见：http://blog.quarkslab.com/mongodb-vs-elasticsearch-the-quest-of-the-holy-performances.html）
+* 监控：统计以及日志类时间序的数据的存储和分析以及可视化，这方面是引领者
+* 国外：Wikipedia使用 ES 提供全文搜索并高亮关键字、StackOverflow结合全文搜索与地理位置查询、Github使用Elasticsearch检索1300亿行的代码
+* 国内：百度（在casio、云分析、网盟、预测、文库、直达号、钱包、风控等业务上都应用了ES，单集群每天导入30TB+数据，总共每天60TB+）、新浪 （见大数据架构--log），阿里巴巴、腾讯等公司均有对ES的使用
+* 使用比较广泛的平台ELK(ElasticSearch, Logstash, Kibana)
 
-    图b演示了Elasticsearch索引，分片，Lucene索引和文档(document)之间的逻辑关系。
+### solr VS ES
 
-#### **类比关系数据库术语**
-
-Elasticsearch Index ~ Database
-
-Types ~ Tables
-
-Mapping ~ Schema 
-
-**关系数据库 ⇒ 数据库 ⇒ 表 ⇒ 行 ⇒ 列(Columns)**
-
-**Elasticsearch ⇒ 索引 ⇒ 类型 ⇒ 文档 ⇒ 字段(Fields)**
-
-    schema  MySQL的文档中指出，在物理上，模式与数据库是同义的，所以，模式和数据库是一回事
-
-### 
-
----
-
-### **目录：**
-
-* **应用场景**
-* **solr VS ES**
-* **核心概念**
-* **ES模块结构**
-* **分片示例**
-
-**应用场景**
-
----
-
-* **站内搜索：**
-* **NoSQL json文档数据库：**
-* **监控：**
-* **国外：Wikipedia使用 ES 提供全文搜索并高亮关键字、StackOverflow结合全文搜索与地理位置查询、**
-* **国内：**
-* **使用比较广泛的平台ELK(ElasticSearch, Logstash, **Kibana****)****
-
-**solr VS ES**
-
----
 
 * **Solr是Apache Lucene项目的开源企业搜索平台。其主要功能包括全文检索、命中标示、分面搜索、动态聚类、数据库集成，以及富文本（如Word、PDF）的处理。**
 * **Solr是高度可扩展的，并提供了分布式搜索和索引复制。Solr是最流行的企业级搜索引擎，Solr4 还增加了NoSQL支持。**
@@ -116,9 +60,9 @@ Mapping ~ Schema 
 5. **Solr 在传统的搜索应用中表现好于 Elasticsearch，但在处理实时搜索应用时效率明显低于 Elasticsearch**
 6. **Solr 是传统搜索应用的有力解决方案，但 Elasticsearch 更适用于新兴的实时搜索应用**
 
-**核心概念**
+## 核心概念
 
----
+TODO:
 
 * **集群（Cluster):**
 
@@ -130,7 +74,7 @@ Mapping ~ Schema 
 
 * **节点(node):**
 * **索引（Index)：**
-* **文档类型（Type）：**
+* **文档类型（Type）：**(新版已删除)
 * **关系数据库 ⇒ 数据库 ⇒ 表 ⇒ 行 ⇒ 列(Columns)**
     **Elasticsearch ⇒ 索引 ⇒ 类型 ⇒ 文档 ⇒ 字段(Fields)**
     **文档（Document) ：**
@@ -147,7 +91,7 @@ Mapping ~ Schema 
 6. **索引中的**
 7. **一个索引默认设置了5个主分片，每个主分片有一个从分片对应**
 
-**ES模块结构**
+## ES模块结构
 
 ---
 
@@ -224,23 +168,6 @@ Mapping ~ Schema 
 * **如果再次杀掉 Node 2 的时候，我们的程序依旧可以在没有丢失任何数据的情况下运行，因为 Node 3 中依旧拥有每个分片的备份**
 * **如果我们重启 Node 1，集群就能够重新分配丢失的从分片，这样结果就会与三节点两从集群一致。如果 Node 1 依旧还有旧节点的内容，系统会尝试重新利用他们，并只会复制在故障期间的变更数据**
 
----
-
-### 
-
-### 
-
-### 
-
-### 
-
-### 
-
-### 
-
-### 
-
-### 
 
 ### **Elasticsearch集群的节点类型**
 

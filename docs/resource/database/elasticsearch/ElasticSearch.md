@@ -156,13 +156,14 @@ POST my_index/_close
 - 数据迁移(可以跨集群迁移)
 
 ```
-POST _reindex
+POST _reindex?slices=5
         {
             "source": {
                 "remote": {
                     "host": "http://172.16.0.39:9200"
                 },
                 "index": "test1",
+                "size": 5000,
                 "query": {
                     "match": {
                         "title": "elasticsearch"
@@ -174,6 +175,10 @@ POST _reindex
             }
         }
 ```
+  - 设置批量大小：默认为1000
+  - 借助scroll的sliced提升写入效率
+    - 可以手动指定，或者设置slices设置为auto，auto的含义是：针对单索引，slices大小=分片数；针对多索引，slices=分片的最小值
+    - 当slices的数量等于索引中的分片数量时，查询性能最高效。slices大小大于分片数，非但不会提升效率，反而会增加开销。
 
 ### 聚合查询
 

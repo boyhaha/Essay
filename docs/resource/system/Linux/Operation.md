@@ -1,10 +1,14 @@
+---
+sidebar: auto
+---
+
 ## 常用命令
 
-| 功能             | 命令              |         |
-| ---------------- | ----------------- | ------- |
-| 查看进程         | lsof -i tcp:8080  |         |
-| 查看端口状态     | netstat -anvp tcp | grep 80 |  |
-| 对关键字进行提取 | grep              |         |
+| 功能                     | 命令                               |     |
+| ------------------------ | ---------------------------------- | --- |
+| 查看进程打开的文件的工具 | lsof -i tcp:8080   / lsof /bin/bash | 那些进程打开了 /bin/bash文件    |
+| 查看端口状态             | `netstat -anvp tcp | grep 80`      |     |
+| 对关键字进行提取         | grep                               |     |
 
 * 查看内核版本
   * cat /proc/version
@@ -13,15 +17,18 @@
 * 查看CPU核心数
   * cat /proc/cpuinfo |grep "cores" | uniq
 * 测试TCP连通性
-  * telnet <hostname/IP address> <port number>
+  * `telnet <hostname/IP address> <port number>`
 * 测试UDP连通性
-  * nc -z -v -u <hostname/IP address> <port number>
+  * `nc -z -v -u <hostname/IP address> <port number>`
+* 查看进程打开的文件
+  * lsof(list open files)：查看进程打开的文件的。
+  * 在 linux 系统中，一切皆文件。通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以 lsof 命令不仅可以查看进程打开的文件、目录，还可以查看进程监听的端口等 socket 相关的信息
 * Linux 定时任务
   * ```
     crontab [-u username]　　　　//省略用户表表示操作当前用户的crontab
       -e      (编辑工作表)
       -l      (列出工作表里的命令)
-      -r      (删除工作作)
+      -r      (删除工作)
     
     ```
   * crontab的命令构成为 时间+动作，其时间有分、时、日、月、周五种
@@ -37,7 +44,7 @@
 ```shell
 grep # 可以对关键字进行提取
 
-a 不要忽略二进制数据。 
+    -a 不要忽略二进制数据。 
     -A<显示列数> 除了显示符合范本样式的那一行之外，并显示该行之后的内容。 
     -b 在显示符合范本样式的那一行之外，并显示该行之前的内容。 
     -c 计算符合范本样式的列数。 
@@ -59,7 +66,7 @@ a 不要忽略二进制数据。
 
 tail
 
--f 循环读取
+    -f 循环读取
     -q 不显示处理信息
     -v 显示详细的处理信息
     -c<数目> 显示的字节数
@@ -69,10 +76,6 @@ tail
     -s, --sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒
 ```
 
-
-
-
-
 ### Linux
 
 - [链接](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
@@ -80,17 +83,18 @@ tail
 ### 2. crontab
 
 - 环境变量
-- 无法读取系统环境变量, 需要在crontab之前命令之前声明
+  - 无法读取系统环境变量, 需要在crontab之前命令之前声明
 - cat /etc/crontab
 - crontab -e
-- 添加crontab 任务
+  - 添加crontab 任务
 - crontab -l
-- 查看正在运行的 任务
+  - 查看正在运行的 任务
 
 ### 3. 常用命令
+> TODO: 解压，压缩命令
 
-- tar
-- \```tex tar 解包：tar zxvf FileName.tar
+1. tar
+```tex tar 解包：tar zxvf FileName.tar
 
 打包：tar czvf FileName.tar DirName
 
@@ -147,7 +151,9 @@ Z命令 　　解压：uncompress FileName.Z
 
 zip命令 　　解压：unzip FileName.zip
 
-压缩：zip -r FileName.zip DirName ```
+压缩：zip -r FileName.zip DirName 
+```
+
 
 ### 4. yum
 
@@ -159,7 +165,7 @@ yum install package  // 安装指定的安装包package
 yum update  // 全部更新 
 yum update package  // 更新指定程序包package
 yum check-update  // 检查可更新的程序 
-yum upgrade package  // 升级指定程序包package 
+yum upgrade package  // 升级指定程序包package（会删除旧版本的package）
 
 // 3 查找和显示 
 yum info // 列出所有可以安装或更新的包的信息
@@ -180,12 +186,6 @@ yum clean, yum clean all  // (= yum clean packages; yum clean oldheaders) 清除
 ```
 
 ### 5. vim
-
-
-
-
-
-
 
 
 

@@ -25,17 +25,17 @@
         1. 请求不要直接打到Nginx上，应该先通过Keepalived（这就是所谓虚拟IP，VIP）
         2. Keepalived应该能监控Nginx的生命状态（提供一个用户自定义的脚本，定期检查Nginx进程状态，进行权重变化,从而实现Nginx故障切换）
 4. 负载均衡四种调度算法
-    1. weight 轮询（默认）。每个请求按时间顺序逐一分配到不同的后端服务器。weight。指定轮询权值，weight值越大，分配到的访问机率越高，主要用于后端每个服务器性能不均的情况下
-    2. ip_hash
-    3. fair
-    4. url_hash. 须安装Nginx 的hash软件包
+   1. weight 轮询（默认）。每个请求按时间顺序逐一分配到不同的后端服务器。weight。指定轮询权值，weight值越大，分配到的访问机率越高，主要用于后端每个服务器性能不均的情况下
+   2. ip_hash
+   3. fair. 依据页面大小和加载时间长短智能地进行负载均衡, 响应时间短的优先分配. 须下载Nginx的upstream_fair模块
+   4. url_hash. 须安装Nginx 的hash软件包
 5. upstream其他参数
     1. down，表示当前的server暂时不参与负载均衡。
     2. backup，预留的备份机器。当其他所有的非backup机器出现故障或者忙的时候，才会请求backup机器，因此这台机器的压力最轻。
     3. max_fails，允许请求失败的次数，默认为1。当超过最大次数时，返回proxy_next_upstream 模块定义的错误。
     4. fail_timeout，在经历了max_fails次失败后，暂停服务的时间。max_fails可以和fail_timeout一起使用
     5. 当负载调度算法为ip_hash时，后端服务器在负载均衡调度中的状态不能是down和backup
-6. 反向代理 / 正向代理
+6.  反向代理 / 正向代理
     1. 反向
         1. 客户端不需要配置，直接访问域名或ip，由代理服务器进行分发
         2. 服务端不可见
