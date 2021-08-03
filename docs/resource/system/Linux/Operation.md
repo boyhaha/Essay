@@ -2,6 +2,10 @@
 sidebar: auto
 ---
 
+## Linux
+
+- [链接](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
+
 ## 常用命令
 
 | 功能                     | 命令                               |     |
@@ -75,10 +79,6 @@ tail
     -q, --quiet, --silent 从不输出给出文件名的首部 
     -s, --sleep-interval=S 与-f合用,表示在每次反复的间隔休眠S秒
 ```
-
-### Linux
-
-- [链接](https://linuxtools-rst.readthedocs.io/zh_CN/latest/index.html)
 
 ### 2. crontab
 

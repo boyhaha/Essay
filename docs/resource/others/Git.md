@@ -1,6 +1,7 @@
 ---
 sidebar: auto
 ---
+# Git
 
 ## centos7 配置git
 ```shell

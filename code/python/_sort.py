@@ -18,9 +18,9 @@ def quick_sort(array, low=0, high=None):
     """算法导论: 快速排序"""
     high = high or len(array) - 1
     if low < high:
-        pivot = partition(array, low, high)
-        quick_sort(array, low, pivot - 1)
-        quick_sort(array, pivot + 1, high)
+        mid = partition(array, low, high)
+        quick_sort(array, low, mid - 1)
+        quick_sort(array, mid + 1, high)
     return array
 
 

@@ -38,3 +38,12 @@
   - 在调用 API 时，客户端需要对参数和 access key 进行自然排序后并使用 secure key 进行签名生成一个额外的参数 digest
   - 服务器根据预先设置的 secure key 进行同样的摘要计算，并要求结果完全一致
   - **注意 secure key 不能在网络中传输，以及在不受信任的位置存放（浏览器等）**
+
+### Token
+
+1. refresh_token
+2. access token 是客户端访问资源服务器的令牌。拥有这个令牌代表着得到用户的授权
+3. refresh token 一定是保存在客户端的服务器上的，而绝不能存放在狭义的客户端
+4. http://xxx.xxx.com/refresh?refreshtoken=&client_id=&client_secret=
+
+### Python 接入

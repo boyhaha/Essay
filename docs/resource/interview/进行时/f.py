@@ -8,7 +8,7 @@ def main():
     di.sort(key= lambda x: list(x.values())[0])
     for d in di:
         name = list(d.keys())[0]
-        print("## [{}](./{})".format(name, name))
+        print("## [{}](./{})".format(name.strip(".md"), name))
 
 
 if __name__ == "__main__":
