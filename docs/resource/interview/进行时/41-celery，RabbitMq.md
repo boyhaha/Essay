@@ -96,3 +96,13 @@ print('mail sent.')
 * 调用任务
     * delay 只是 apply_async 的快捷方式，二者作用相同，只是 apply_async 可以进行更多的任务属性设置，比如 callbacks/errbacks 正常回调与错误回调、执行超时、重试、重试时间等等，
 
+
+## RabbitMQ
+
+### Exchange
+1. 交换器，用来接收生产者发送的消息并将这些消息路由给服务器中的队列
+2. 类型
+   1. direct：完全匹配、单播的模式。routing key 和 binding key要完全一致
+   2. fanout：每个发到 fanout 类型交换器的消息都会分到所有绑定的队列上去，很像子网广播，转发类型最快
+   3. topic：topic 交换器通过模式匹配分配消息的路由键属性，将路由键和某个模式进行匹配，此时队列需要绑定到一个模式上
+   4. headers：headers 匹配 AMQP 消息的 header 而不是路由键，此外 headers 交换器和 direct 交换器完全一致，但性能差很多，目前几乎用不到了

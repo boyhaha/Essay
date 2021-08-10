@@ -17,7 +17,9 @@ sidebar: auto
 * 查看内核版本
   * cat /proc/version
 * 查看内存大小
-  * cat /proc/meminfo |grep MemTotal
+  * cat /proc/meminfo | grep MemTotal
+* 查看硬盘大小
+  * df -hl
 * 查看CPU核心数
   * cat /proc/cpuinfo |grep "cores" | uniq
 * 测试TCP连通性
