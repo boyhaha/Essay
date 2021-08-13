@@ -175,6 +175,7 @@ F2
         "--max-line-length=120",
         "--ignore", "E402"
     ],
+    "terminal.integrated.env.windows": {"PYTHONPATH":"${workspaceFolder};${env:PYTHONPATH}"}
 }
 ```
 
