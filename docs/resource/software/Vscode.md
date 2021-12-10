@@ -140,22 +140,23 @@ F2
 
 ```
 {
-    "window.zoomLevel": 1,
     "files.autoSave": "onFocusChange",
     "python.linting.flake8Enabled": true,
     "python.linting.enabled": true,
-    "python.linting.flake8Args": ["--max-line-length=120"],
+    "python.linting.flake8Args": [
+        "--max-line-length=120"
+    ],
     "editor.selectionHighlight": true,
     "editor.tabSize": 4,
     "python.linting.pylintEnabled": false,
     "files.exclude": {
         "**/__pycache__": true,
-        "**/*.pyc": true
+        "**/*.pyc": true,
+        "**/~$*.docx": true,
     },
     "editor.rulers": [
         80, 120
     ],
-    "terminal.integrated.shell.osx": "/bin/zsh",
     "editor.minimap.enabled": false,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
@@ -163,19 +164,150 @@ F2
     "editor.largeFileOptimizations": false,
     "workbench.iconTheme": "vscode-icons",
     "cSpell.userWords": [
+        "algo",
+        "consts",
+        "Fuser",
+        "ilvl",
+        "jsonify",
+        "liuxu",
+        "lxml",
+        "NOQA",
+        "numpy",
+        "nums",
+        "tqdm"
     ],
     "sync.gist": "79ab3980400d3f6d9f766d2bf5acf578",
-    "workbench.activityBar.visible": true,
     "files.defaultLanguage": "python",
-    "todohighlight.isEnable": false,
-    "terminal.integrated.automationShell.osx": "",
     "diffEditor.ignoreTrimWhitespace": false,
-    "workbench.colorTheme": "Tiny Light",
     "python.formatting.autopep8Args": [
         "--max-line-length=120",
         "--ignore", "E402"
     ],
-    "terminal.integrated.env.windows": {"PYTHONPATH":"${workspaceFolder};${env:PYTHONPATH}"}
+    "typescript.npm": "",
+    "python.terminal.executeInFileDir": true,
+    "terminal.integrated.commandsToSkipShell": [
+        "psl.stepIn",
+        "psl.stepOut",
+        "psl.stepOver",
+        "psl.sendToHostTerminal"
+    ],
+    "terminal.integrated.env.windows": {
+        "PYTHONPATH": "${workspaceFolder};${env:PYTHONPATH}"
+    },
+    "remote.SSH.remotePlatform": {
+        "177": "linux",
+        "211": "linux",
+        "224": "linux"
+    },
+    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWxcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltcIjgwODA4MFwiLFwiMDAwMDAwXCIsXCI0RDRENERcIixcIkNDQ0NDQ1wiLFwiOTlGRjk5XCIsXCIwREZGMURcIixcIjFBMUExQVwiLFwiNDJGRjU1XCIsXCJDQ0ZGQ0NcIl0sXCJmb3JtYXRXaWR0aFwiOjAsXCJjcmVhdGVUYXJnZXRcIjpmYWxzZSxcInBhZ2VGb3JtYXRcIjp7XCJ4XCI6MCxcInlcIjowLFwid2lkdGhcIjo4MjcsXCJoZWlnaHRcIjoxMTY5fSxcInNlYXJjaFwiOnRydWUsXCJzaG93U3RhcnRTY3JlZW5cIjp0cnVlLFwiZ3JpZENvbG9yXCI6XCIjZDBkMGQwXCIsXCJkYXJrR3JpZENvbG9yXCI6XCIjNmU2ZTZlXCIsXCJhdXRvc2F2ZVwiOnRydWUsXCJyZXNpemVJbWFnZXNcIjpudWxsLFwib3BlbkNvdW50ZXJcIjowLFwidmVyc2lvblwiOjE4LFwidW5pdFwiOjEsXCJpc1J1bGVyT25cIjpmYWxzZSxcInVpXCI6XCJcIn0ifQ==",
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.formatOnPaste": true,
+    "background.enabled": true,
+    "background.useDefault": false,
+    "terminal.integrated.inheritEnv": false,
+    "background.customImages": [
+        "file:///D:/1.jpg"
+    ],
+    "background.style": {
+
+        "content": "''",
+        "pointer-events": "none",
+        "position": "absolute",
+        "z-index": "99999",
+        "width": "100%",
+        "height": "100%",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100%,100%",
+        "opacity": 0.2
+    },
+    "terminal.integrated.defaultProfile.windows": "Ubuntu-20.04 (WSL)",
+    "editor.maxTokenizationLineLength": 200000000,
+    "redhat.telemetry.enabled": true,
+    "xml.symbols.maxItemsComputed": 500000000,
+    "[xml]": {
+        "editor.defaultFormatter": "redhat.vscode-xml"
+    },
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        },
+        "sh": {
+            "path": "/bin/sh"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "source": "PowerShell",
+            "icon": "terminal-powershell"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash"
+        },
+        "Windows PowerShell": {
+            "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        }
+    },
+    "search.followSymlinks": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.python"
+    },
+    "window.zoomLevel": 1,
+    "workbench.colorTheme": "Noctis Lux",
+    "powermode.enabled": true,
+    "powermode.presets": "exploding-rift",
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    
+}
+
+
+```
+
+```
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "current",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+        },
+        {
+            "name": "runserver",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/runserver.py",
+        },
+    ]
 }
 ```
 
@@ -203,5 +335,5 @@ Tiny Light
 Settings Sync  # 上传/下载配置
 compareit  # 对比插件
 highlight-icemode  # 相同代码高亮
-TODO Highlight  # TODO list
+TODO tree
 ```
