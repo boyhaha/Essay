@@ -1,0 +1,41 @@
+version: "2.3"
+services:
+
+  mongodb:
+    image: mongo:3.6
+    container_name: hacker_mongodb
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=adminstarsee2021
+      - MONGO_INITDB_DATABASE=kg_fuse_test
+    volumes:
+      - ../mounts/db/mongodb:/data/db
+    ports:
+      - 9017:27017
+    networks:
+      - default
+
+  es:
+    image: elasticsearch:7.6.2
+    container_name: hacker_es
+    restart: always
+    environment:
+      - bootstrap.memory_lock=true
+      - TZ=Asia/Shanghai
+    volumes:
+      - ../mounts/db/es:/usr/share/elasticsearch/data
+      - ../mounts/configs/es/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - ../mounts/configs/es/plugins/:/usr/share/elasticsearch/plugins/
+    ports:
+      - 9020:9200
+      - 9030:9300
+    networks:
+      - default
+    entrypoint:
+      - su
+      - "-"
+      - "elasticsearch"
+      - "-c"
+      - /usr/share/elasticsearch/bin/elasticsearch

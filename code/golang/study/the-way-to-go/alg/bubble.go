@@ -1,11 +1,12 @@
 package alg
 
+import "fmt"
 
-func BubbleSort(array []int) ([]int) {
+func BubbleSort(array []int) []int {
 	swap := false
-	for i := len(array)-1; i >= 0; i-- {
+	for i := len(array) - 1; i >= 0; i-- {
 		for j := 0; j < i; j++ {
-			if array[j] > array[j+1]{
+			if array[j] > array[j+1] {
 				array[j], array[j+1] = array[j+1], array[j]
 				swap = true
 			}
@@ -13,6 +14,8 @@ func BubbleSort(array []int) ([]int) {
 		if !swap {
 			break
 		}
+		swap = false
+		fmt.Println(i, swap)
 	}
 	return array
 }
