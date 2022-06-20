@@ -113,5 +113,7 @@ ssh git@github.com
     * git tag -a tag_name -m "注释"
     * git tag -am "注释" tag_name
     
-  
-    
+
+### branch
+* 删除本地已不存在的远程分支
+  * git remote prune origin
