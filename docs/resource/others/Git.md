@@ -15,6 +15,7 @@ git config --global core.quotepath false  # 正常显示中文
 
 # 查看配置
 git config --list
+git config core.editor "vim"  # 设置vim为编辑器
 
 # 生成秘钥
 ssh-keygen -t rsa -C “your email address”
@@ -24,6 +25,10 @@ settings->SSH Keys->New SSH key
 
 # 测试
 ssh git@github.com
+
+# 指定特定key
+git config core.sshCommand "ssh -i ~/.ssh/you_ssh_key"
+git clone git@github.com:yoyun/hello.git --config core.sshCommand="ssh -i ~/.ssh/you_ssh_key"
 ```
 
 ## 基础

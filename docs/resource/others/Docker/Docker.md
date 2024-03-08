@@ -64,3 +64,25 @@ uname -r
         --tail string    从日志末尾显示多少行日志， 默认是all
     -t, --timestamps     显示时间戳
         --until string   显示自某个timestamp之前的日志，或相对时间，如42m（即42分钟）
+
+
+## 问题
+1. network
+```
+ERROR: error while removing network: network kge-dev-default id xxx has active endpoints
+
+docker network inspect \
+  --format '{{range $cid,$v := .Containers}}{{printf "%s: %s\n" $cid $v.Name}}{{end}}' \
+  "<network>"
+```
+
+2. 普通用户无法使用docker
+```
+cat /etc/group | grep docker
+
+sudo groupadd docker
+sudo usermod -aG docker your_username
+su - your_username
+docker run hello-world
+
+```

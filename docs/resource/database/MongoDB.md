@@ -223,11 +223,11 @@ quit()   退出mongo shell
 - 数据库的备份和恢复（在终端中输入）
 
 ```
-备份：mongodump -h dbhost -d dbname -o dbdir
-实例：mongodump -h 127.0.0.1 -d stu -o python
+备份：mongodump -h dbhost -d dbname -o dbdir -u DATABASE_USER -p PASSWORD
+示例：mongodump -h 127.0.0.1 -d stu -o python
 
-恢复：mongorestore -h 127.0.0.1:27017 -d dbname <path>
-实例：mongorestore -h 127.0.0.1:27017 -d student python/stu
+恢复：mongorestore -h 127.0.0.1:27017 -d dbname <path> -u DATABASE_USER -p PASSWORD
+示例：mongorestore -h 127.0.0.1:27017 -d student python/stu
 ```
 
 - 数据库的检测

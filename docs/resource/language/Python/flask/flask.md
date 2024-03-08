@@ -3,6 +3,7 @@
 ```
 # 外部可见
 flask run --host=0.0.0.0
+# 采用 gunicorn 启动时，加上--preload，可以输出为何无法启动
 
 # 打开开发模式
 export FLASK_ENV=development

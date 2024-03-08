@@ -246,3 +246,9 @@ POST _reindex?slices=5
 6. es 升级后未修改jvm.options 默认堆大小(生产环境1G一般都不够用)
 
 7. [Elasticsearch堆内存](https://blog.csdn.net/laoyang360/article/details/79998974)
+
+
+
+## 
+1. max_map_count修改
+```echo vm.max_map_count=655360 >> /etc/sysctl.conf```

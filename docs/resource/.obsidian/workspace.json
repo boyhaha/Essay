@@ -1,0 +1,159 @@
+{
+  "main": {
+    "id": "073cb6dbd9d247fb",
+    "type": "split",
+    "children": [
+      {
+        "id": "34c17f38f4a783dc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2911821b4d47c48f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "algorithm/数据结构.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "dc4f0a760b398f12",
+    "type": "split",
+    "children": [
+      {
+        "id": "85976c478ec367e0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b374737aae290b30",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "88afb3b74c11ab19",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8ed334f711a99ca8",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a34db0a004a8aa09",
+    "type": "split",
+    "children": [
+      {
+        "id": "7b94d5d5d279290e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5e01802b3d50fe16",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "algorithm/数据结构.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "ec3c8f1b7b74a893",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "algorithm/数据结构.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "47698be49eedecc5",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "076cd031cec818bc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "algorithm/数据结构.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "b374737aae290b30",
+  "lastOpenFiles": [
+    "未命名 1.md",
+    "algorithm/数据结构.md",
+    "未命名.md",
+    "algorithm/树.md",
+    "algorithm/排序.md",
+    "algorithm/01背包.md",
+    "algorithm/LeetCode.md"
+  ]
+}
