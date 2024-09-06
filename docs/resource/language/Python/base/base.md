@@ -11,16 +11,16 @@
 * * ### 字符串
   		
       - [base64](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001431954588961d6b6f51000ca4279a3415ce14ed9d709000)
-      - 使用64个字符表示任意二进制数据
+        - 使用64个字符表示任意二进制数据
       - basestring
-      - basestring. str和unicode的父类，也是抽象类，不能被调用和实例化
+        - str和unicode的父类，也是抽象类，不能被调用和实例化
       - Shuffle
-      - random.shuffle (lst )
+        - random.shuffle (lst )
         - 随机排序
       - json
-      - json.loads()
-        - 标准的JSON语法中,不支持单引号,属性或者属性的值都必须是双括号括起来
-        - 同时不支持转换Unicode对象
+        - json.loads()
+          - 标准的JSON语法中,不支持单引号,属性或者属性的值都必须是双括号括起来
+          - 同时不支持转换Unicode对象
       
       ### 魔术方法
     

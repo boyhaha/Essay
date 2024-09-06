@@ -26,3 +26,5 @@
       3. > "match(n:`人物`{name:'%s'}), (m:`人物`{name:'%s'}), p=allShortestPaths((n)-[*]->(m)) return p"
    6. 节点
       1. CREATE (n:Person{name:‘ZJ’}) return n
+
+T-90主战坦克的宽度T-90主战坦克的宽度

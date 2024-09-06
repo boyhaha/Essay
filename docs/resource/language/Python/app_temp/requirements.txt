@@ -1,0 +1,6 @@
+# pip install -r requirements.txt -i https://pypi.doubanio.com/simple --timeout=1000
+flask==3.0.0
+pyyaml==6.0.1
+gevent==23.9.1
+gunicorn==21.2.0
+isort==5.13.2

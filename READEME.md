@@ -2,6 +2,7 @@
 
 # 本地运行
 npm run docs:dev
+http://localhost:8080/
 
 # 生成静态文件
 npm run docs:build
